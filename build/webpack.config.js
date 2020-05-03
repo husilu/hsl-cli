@@ -50,9 +50,14 @@ module.exports = {
       },
       {
         test: /\.jsx?$/,
-        loader: 'babel-loader'
+        exclude: /(node_modules|bower_components)/,
+        use:  {
+          loader: 'babel-loader?cacheDirectory=true',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       },
-
       {
         test: /\.(jpe?g|png|gif|svg)$/,
         use: [

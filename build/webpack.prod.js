@@ -4,6 +4,7 @@ const webpack = require('webpack')
 const webpackConfig = require('./webpack.config')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCssnanoPlugin = require('@intervolga/optimize-cssnano-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 /*   clean-webpack-plugin 3.0 以上的版本需要使用对象结构  */
 // const CleanWebpackPlugin = require('clean-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -31,6 +32,7 @@ module.exports = merge(webpackConfig, {
     }
   },
   plugins: [
+    new BundleAnalyzerPlugin(),
     new webpack.DefinePlugin({
       'process.env': {
         NODE_ENV: JSON.stringify('production')
